@@ -1,6 +1,5 @@
-#include <stdio.h>
-
-// 1. Function Declarations
+#include<stdio.h>
+void isprime();
 void factorial();
 void sub();
 void add();
@@ -12,13 +11,12 @@ int main()
     printf("\t1: || Addition      ||\n");
     printf("\t2: || Subtraction   ||\n");
     printf("\t3: || Factorial     ||\n");
-    printf("\t4: || EXIT          ||\n");
+    printf("\t4: || Prime Number  ||\n");
+    printf("\t5: || EXIT          ||\n");
     printf("\n-----------------------------\n");
-
-    // FIX: Use while(1) for menus, not a for loop with 'i'
     while(1) 
     {
-        printf("\nChoose the number (1-4): ");
+        printf("\nChoose the number (1-5): ");
         scanf("%d", &y);
 
         switch (y) 
@@ -33,18 +31,17 @@ int main()
                 factorial();
                 break;
             case 4:
-                printf("Exiting program.\n");
-                return 0; // Ends the program
+            isprime();
+            break;
+            case 5:
+            printf("exit number");
+                return 0;
             default:
                 printf("Not found. Please try again.\n");
         }
     } 
     return 0;
-} // <--- FIX: You MUST close main() here!
-
-// ---------------------------------------------------------
-// Function Definitions (Must be OUTSIDE main)
-// ---------------------------------------------------------
+}
 
 void add() 
 {
@@ -67,7 +64,7 @@ void sub()
 void factorial() 
 {
     int i, n;
-    int result = 1; // FIX: Must start at 1 for multiplication!
+    int result = 1;
     
     printf("Enter the number to find factorial: ");
     scanf("%d", &n);
@@ -77,4 +74,24 @@ void factorial()
         result = result * i;
     }
     printf("Factorial result: %d\n", result);
+}
+void isprime() 
+{
+    int n, i, flag = 0;
+    printf("Enter a positive integer: ");
+    scanf("%d", &n);
+    
+    for(i = 2; i <= n/2; i++) 
+    {
+        if(n % i == 0) 
+        {
+            flag = 1;
+            break;
+        }
+    }
+    
+    if(flag == 0)
+        printf("%d is a prime number.\n", n);
+    else
+        printf("%d is not a prime number.\n", n);
 }
