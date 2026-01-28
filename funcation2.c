@@ -3,6 +3,7 @@ void isprime();
 void factorial();
 void sub();
 void add();
+void searchNumber();
 
 int main() 
 {
@@ -12,11 +13,12 @@ int main()
     printf("\t2: || Subtraction   ||\n");
     printf("\t3: || Factorial     ||\n");
     printf("\t4: || Prime Number  ||\n");
-    printf("\t5: || EXIT          ||\n");
+    printf("\t5: || search Number ||\n");
+    printf("\t6: || EXIT          ||\n");
     printf("\n-----------------------------\n");
     while(1) 
     {
-        printf("\nChoose the number (1-5): ");
+        printf("\nChoose the number (1-6): ");
         scanf("%d", &y);
 
         switch (y) 
@@ -34,6 +36,9 @@ int main()
             isprime();
             break;
             case 5:
+            searchNumber();
+            break;
+            case 6:
             printf("exit number");
                 return 0;
             default:
@@ -94,4 +99,28 @@ void isprime()
         printf("%d is a prime number.\n", n);
     else
         printf("%d is not a prime number.\n", n);
+}
+void searchNumber() {
+    int arr[5];
+    int i, target;
+    int found = 0;
+
+    printf("\n--- Number Search ---\n");
+    printf("Enter 5 numbers for the list:\n");
+    for(i = 0; i < 5; i++) {
+        printf("Index %d: ", i);
+        scanf("%d", &arr[i]);
+    }
+    printf("\nEnter the number to search for: ");
+    scanf("%d", &target);
+    for(i = 0; i < 5; i++) {
+        if (arr[i] == target) {
+            printf("Success! Number found at index %d\n", i);
+            found = 1;
+            break;
+        }
+    }
+    if (found == 0) {
+        printf("Number %d was not found in the list.\n", target);
+    }
 }
